@@ -3,8 +3,8 @@
   hosts: all
   tasks:
     - name: Acccess web page
-      uri:
-        url: http://192.168.29.69/index.html
+      win_uri:
+        url: http://192.168.29.69/test.html
       register: http_output
     - name: capture
       debug:
