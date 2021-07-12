@@ -4,7 +4,7 @@
   tasks:
     - name: Copy file
       win_copy:
-        content: >
+        content: |
                 "This is a file created using Automation"
                  Second Line
                  Third line
