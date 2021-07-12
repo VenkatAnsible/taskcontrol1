@@ -15,5 +15,4 @@
     - name: Page is not accessible
       debug:
         msg: website is not accessible
-      when: my.status_code != 200
       
