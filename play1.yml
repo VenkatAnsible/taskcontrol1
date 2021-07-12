@@ -1,0 +1,13 @@
+---
+- name: Loop register test
+  hosts: all
+  tasks:
+  - name: Executing commands and registering output in the variable "output"
+    win_shell: "{{ item }}"
+    loop:
+      - whoami
+      - hostname
+    register: output
+  - name: showing the results from output variable
+    debug:
+      var: output
