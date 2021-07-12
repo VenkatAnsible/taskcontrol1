@@ -8,4 +8,5 @@
                 "This is a file created using Automation"
                  Second Line
                  Third line
+                 Fourth Line
         dest: C:\users\devops\desktop\hello.txt
