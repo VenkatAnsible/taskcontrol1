@@ -1,0 +1,59 @@
+vim index.html.j2
+<!doctype html>
+<!-- {{ ansible_managed }} -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Home Page</title>
+</head>
+<body>
+  <h1>{{ site_title }}</h1>
+  <h2>{{ site_subtitle }}</h2>
+  <p>
+    Visit the <a href="info.html">info page</a>.
+    This site was deployed by {{ deployed_by }}.
+  </p>
+</body>
+</html>
+
+vim info.html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Info</title>
+</head>
+<body>
+  <h1>Site Info</h1>
+  <p>This is a static page.</p>
+</body>
+</html>
+
+vim myvars.ynl
+---
+deployed_by: Ansible
+site_title: Default Site
+site_subtitle: Welcome!
+debug_tools: False
+
+
+- name: IIS Web Server started
+  win_feature:
+    name: Web-Server
+    state: present
+
+- name: HTTP Tracing is installed
+  win_feature:
+    name: Web-Http-Tracing
+    state: present
+  when: debug_tools
+
+- name: Index page is deployed
+  win_template:
+    src: index.html.j2
+    dest: C:\Inetpub\wwwroot\index.html
+
+- name: Info page is deployed
+  win_copy:
+    src: info.html
+    dest: C:\Inetpub\wwwroot\info.html
