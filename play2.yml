@@ -8,7 +8,7 @@
       - whoami
       - hostname
     register: output
-    when: inventory_hostname == '192.168.29.68'
+    when: inventory_hostname == '192.168.29.69'
   - name: showing the results from output variable
     debug:
       var: output
