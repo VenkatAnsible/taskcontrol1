@@ -3,7 +3,7 @@
   hosts: all
   tasks:
     - name: Acccess web page
-      win_uri:
+      uri:
         url: http://192.168.29.69/index.html
       register: http_output
     - name: capture
