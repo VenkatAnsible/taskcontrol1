@@ -1,0 +1,11 @@
+---
+- name: To test create mylti lines
+  hosts: all
+  tasks:
+    - name: Copy file
+      win_copy:
+        content: >
+                "This is a file created using Automation"
+                 Second Line
+                 Third line
+        dest: C:\users\devops\desktop\hello.txt
