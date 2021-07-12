@@ -4,8 +4,15 @@
   tasks:
     - name: Acccess web page
       win_uri:
-        url: http://192.168.29.69/test.html
-      register: http_output
-    - name: capture
+        url: http://192.168.29.69
+      register: my
+    - name: Page accessible
       debug:
-        var: http_output
+        msg: website is accessible
+      when: my.status_code == 200
+      
+    - name: Page is not accessible
+      debug:
+        msg: website is not accessible
+      when: my.status_code != 200
+      
