@@ -1,0 +1,11 @@
+---
+- name: To test block and rescue
+  hosts: all
+  tasks:
+    - name: Acccess web page
+      win_uri:
+        url: http://192.168.29.69
+      register: http_output
+    - name: capture
+      debug:
+        var: http_output
