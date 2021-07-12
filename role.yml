@@ -57,3 +57,8 @@ debug_tools: False
   win_copy:
     src: info.html
     dest: C:\Inetpub\wwwroot\info.html
+    
+- name: restart web
+  win_service: 
+    name: W3Svc  
+    state: restarted
